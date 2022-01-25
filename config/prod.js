@@ -1,3 +1,4 @@
 module.exports = {
-  'dbURL': 'mongodb+srv://OriBA:Htph1998@toystore.lgalp.mongodb.net/toyDB?retryWrites=true&w=majority',
-}
+  dbURL:
+    'mongodb+srv://yuval-shai:<password>@skello-proj.3ysvn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+};
