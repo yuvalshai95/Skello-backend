@@ -42,6 +42,11 @@ const userRoutes = require('./api/user/user.routes');
 const boardRoutes = require('./api/board/board.routes');
 const {connectSockets} = require('./services/socket.service');
 
+app.use('/api/auth', authRoutes);
+app.use('/api/user', userRoutes);
+app.use('/api/board', boardRoutes);
+connectSockets(http, session);
+
 // Make every server-side-route to match the index.html
 // so when requesting http://localhost:3030/index.html/car/123 it will still respond with
 // our SPA (single page app) (the index.html file) and allow vue-router to take it from there
