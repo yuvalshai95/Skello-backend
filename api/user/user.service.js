@@ -3,6 +3,8 @@ const logger = require('../../services/logger.service');
 
 module.exports = {
   query,
+  getByUsername,
+  add,
 };
 
 async function query() {
@@ -15,7 +17,35 @@ async function query() {
     });
     return users;
   } catch (err) {
-    logger.error('cannot find users', err);
+    logger.error('Cannot find users', err);
+    throw err;
+  }
+}
+
+async function getByUsername(username) {
+  try {
+    const collection = await dbService.getCollection('user');
+    const user = await collection.findOne({username});
+    return user;
+  } catch (err) {
+    logger.error(`Cannot finding user ${username}`, err);
+    throw err;
+  }
+}
+
+async function add(user) {
+  try {
+    // peek only updatable fields!
+    const userToAdd = {
+      username: user.username,
+      password: user.password,
+      fullname: user.fullname,
+    };
+    const collection = await dbService.getCollection('user');
+    await collection.insertOne(userToAdd);
+    return userToAdd;
+  } catch (err) {
+    logger.error('Cannot insert user', err);
     throw err;
   }
 }
