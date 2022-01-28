@@ -60,8 +60,6 @@ app.post('/api/google-login', async (req, res) => {
     audience: process.env.CLIENT_ID
   })
   const { name, email, picture } = ticket.getPayload()
-  // Todo: to send it to user auth
-  
   res.json({ name, email, picture, googleId })
 })
 
