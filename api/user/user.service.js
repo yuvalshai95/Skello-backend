@@ -33,14 +33,16 @@ async function getByUsername(username) {
   }
 }
 
-async function add(user) {
+async function add({username, password, fullname, imgUrl}) {
   try {
     // peek only updatable fields!
     const userToAdd = {
-      username: user.username,
-      password: user.password,
-      fullname: user.fullname,
+      username,
+      password,
+      fullname,
+      imgUrl,
     };
+    console.log('🚀 ~ file: user.service.js ~ line 40 ~ add ~ userToAdd', userToAdd);
     const collection = await dbService.getCollection('user');
     await collection.insertOne(userToAdd);
     return userToAdd;
