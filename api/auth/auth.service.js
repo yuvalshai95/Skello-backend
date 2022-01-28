@@ -14,7 +14,6 @@ async function login(username, password) {
 
 async function signup(username, password, fullname, imgUrl, googleId) {
   if (googleId) {
-    console.log('Google id here!')
     const saltRounds = 10;
     logger.debug(`auth.service - signup with username: ${username}, fullname: ${fullname}`);
     if (!username || !password || !fullname || !imgUrl)
@@ -22,9 +21,8 @@ async function signup(username, password, fullname, imgUrl, googleId) {
     const user = await userService.getByUsername(username);
     // With Google - user Exists
     if (user) {
-      console.log('@@@@@@@@@@@@@ user !!!!!1', user)
       return user
-    } else { 
+    } else {
       // With Google - user doesnt Exists
       const hash = await bcrypt.hash(password, saltRounds);
       return userService.add({ username, password: hash, fullname, imgUrl, googleId });

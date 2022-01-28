@@ -14,7 +14,6 @@ async function getUsers(req, res) {
 async function getUserById(req, res) {
   try {
     const userId = req.params.id
-    console.log('userId controller', userId);
     const user = await userService.getById(userId);
     res.send(user);
   } catch (err) {

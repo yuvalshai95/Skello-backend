@@ -55,9 +55,6 @@ connectSockets(http, session);
 
 app.post('/api/google-login', async (req, res) => { 
   const { token, googleId } = req.body;
-  console.log('googleId:', googleId);
-  
-  
   const ticket = await client.verifyIdToken({
     idToken: token,
     audience: process.env.CLIENT_ID
