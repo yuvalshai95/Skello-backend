@@ -1,5 +1,5 @@
 const express = require('express');
-const {getUsers} = require('./user.controller');
+const {getUsers, getUserById} = require('./user.controller');
 // const {getUser, getUsers, deleteUser, updateUser} = require('./user.controller')
 // const {requireAuth, requireAdmin} = require('../../middlewares/requireAuth.middleware')
 
@@ -9,8 +9,8 @@ const router = express.Router();
 // router.use(requireAuth)
 
 router.get('/', getUsers);
+router.get('/:id', getUserById)
 
-// router.get('/:id', getUser)
 // router.put('/:id', requireAuth, requireAdmin,  updateUser)
 // router.post('/', requireAuth, requireAdmin, addUser)
 // router.delete('/:id', requireAuth, requireAdmin, deleteUser)

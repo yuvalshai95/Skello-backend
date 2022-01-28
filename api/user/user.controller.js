@@ -11,6 +11,19 @@ async function getUsers(req, res) {
   }
 }
 
+async function getUserById(req, res) {
+  try {
+    const userId = req.params.id
+    console.log('userId controller', userId);
+    const user = await userService.getById(userId);
+    res.send(user);
+  } catch (err) {
+    logger.error('Failed to get user', err);
+    res.status(500).send({err: 'Failed to get user'});
+  }
+}
+
 module.exports = {
   getUsers,
+  getUserById
 };

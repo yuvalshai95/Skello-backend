@@ -1,9 +1,11 @@
 const dbService = require('../../services/db.service');
 const logger = require('../../services/logger.service');
+const ObjectId = require('mongodb').ObjectId;
 
 module.exports = {
   query,
   getByUsername,
+  getById,
   add,
 };
 
@@ -25,7 +27,7 @@ async function query() {
 async function getByUsername(username) {
   try {
     const collection = await dbService.getCollection('user');
-    const user = await collection.findOne({username});
+    const user = await collection.findOne({ username });
     return user;
   } catch (err) {
     logger.error(`Cannot finding user ${username}`, err);
@@ -33,7 +35,19 @@ async function getByUsername(username) {
   }
 }
 
-async function add({username, password, fullname, imgUrl}) {
+async function getById(userId) {
+  try {
+    const collection = await dbService.getCollection('user');
+    const user = await collection.findOne({ _id: ObjectId(userId) });
+    console.log('user from DB - service', user)
+    return user;
+  } catch (err) {
+    logger.error(`Cannot find user with Id ${userId}`, err);
+    throw err;
+  }
+}
+
+async function add({ username, password, fullname, imgUrl }) {
   try {
     // peek only updatable fields!
     const userToAdd = {
@@ -42,7 +56,6 @@ async function add({username, password, fullname, imgUrl}) {
       fullname,
       imgUrl,
     };
-    console.log('🚀 ~ file: user.service.js ~ line 40 ~ add ~ userToAdd', userToAdd);
     const collection = await dbService.getCollection('user');
     await collection.insertOne(userToAdd);
     return userToAdd;
