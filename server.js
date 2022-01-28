@@ -4,10 +4,12 @@ const path = require('path');
 const expressSession = require('express-session');
 
 // Google
-const dotenv = require('dotenv')
+const REACT_APP_GOOGLE_CLIENT_ID =
+  'http://349715903171-rm59q64faelu1sivune89lktj8kf78s0.apps.googleusercontent.com';
+const dotenv = require('dotenv');
 dotenv.config();
-const { OAuth2Client } = require('google-auth-library')
-const client = new OAuth2Client(process.env.CLIENT_ID)
+const {OAuth2Client} = require('google-auth-library');
+const client = new OAuth2Client(REACT_APP_GOOGLE_CLIENT_ID);
 
 const app = express();
 const http = require('http').createServer(app);
@@ -53,16 +55,17 @@ app.use('/api/user', userRoutes);
 app.use('/api/board', boardRoutes);
 connectSockets(http, session);
 
-app.post('/api/google-login', async (req, res) => { 
-  const { token, googleId } = req.body;
+app.post('/api/google-login', async (req, res) => {
+  const {token, googleId} = req.body;
   const ticket = await client.verifyIdToken({
     idToken: token,
-    audience: process.env.CLIENT_ID
-  })
-  const { name, email, picture } = ticket.getPayload()
-  res.json({ name, email, picture, googleId })
-})
+    audience: process.env.CLIENT_ID,
+  });
+  const {name, email, picture} = ticket.getPayload();
+  // Todo: to send it to user auth
 
+  res.json({name, email, picture, googleId});
+});
 
 // Make every server-side-route to match the index.html
 // so when requesting http://localhost:3030/index.html/car/123 it will still respond with

@@ -27,7 +27,7 @@ async function query() {
 async function getByUsername(username) {
   try {
     const collection = await dbService.getCollection('user');
-    const user = await collection.findOne({ username });
+    const user = await collection.findOne({username});
     return user;
   } catch (err) {
     logger.error(`Cannot finding user ${username}`, err);
@@ -38,8 +38,7 @@ async function getByUsername(username) {
 async function getById(userId) {
   try {
     const collection = await dbService.getCollection('user');
-    const user = await collection.findOne({ _id: ObjectId(userId) });
-    console.log('user from DB - service', user)
+    const user = await collection.findOne({_id: ObjectId(userId)});
     return user;
   } catch (err) {
     logger.error(`Cannot find user with Id ${userId}`, err);
@@ -47,7 +46,7 @@ async function getById(userId) {
   }
 }
 
-async function add({ username, password, fullname, imgUrl }) {
+async function add({username, password, fullname, imgUrl}) {
   try {
     // peek only updatable fields!
     const userToAdd = {
