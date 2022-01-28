@@ -13,7 +13,6 @@ async function login(username, password) {
 }
 
 async function signup(username, password, fullname, imgUrl) {
-  console.log('🚀 ~ file: auth.service.js ~ line 16 ~ signup ~ imgUrl', imgUrl);
   const saltRounds = 10;
   logger.debug(`auth.service - signup with username: ${username}, fullname: ${fullname}`);
   if (!username || !password || !fullname || !imgUrl)
