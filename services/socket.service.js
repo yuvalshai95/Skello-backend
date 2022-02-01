@@ -14,6 +14,16 @@ function connectSockets(http, session) {
     socket.on('disconnect', socket => {
       console.log('Someone disconnected');
     });
+    // Workspace
+    socket.on('join-workspace', str => {
+      if (socket.myBoardId === str) return;
+      if (socket.myBoardId) {
+        socket.leave(socket.myBoardId);
+      }
+      socket.join(str);
+      socket.myBoardId = str;
+    });
+    // Board
     socket.on('join-board', boardId => {
       if (socket.myBoardId === boardId) return;
       if (socket.myBoardId) {
@@ -28,6 +38,7 @@ function connectSockets(http, session) {
     });
     socket.on('board-change', updatedBoard => {
       console.log('Emitting board change');
+      console.log('updatedBoard:', updatedBoard);
       socket.broadcast.to(socket.myBoardId).emit('updated-board', updatedBoard);
     });
     // socket.on('user-watch', userId => {
