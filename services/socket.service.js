@@ -38,7 +38,6 @@ function connectSockets(http, session) {
     });
     socket.on('board-change', updatedBoard => {
       console.log('Emitting board change');
-      console.log('updatedBoard:', updatedBoard);
       socket.broadcast.to(socket.myBoardId).emit('updated-board', updatedBoard);
     });
     // socket.on('user-watch', userId => {
