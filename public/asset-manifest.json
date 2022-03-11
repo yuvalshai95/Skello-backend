@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.29fc0ef7.css",
-    "main.js": "/static/js/main.de206278.js",
+    "main.css": "/static/css/main.1c029a88.css",
+    "main.js": "/static/js/main.067cb299.js",
     "static/js/377.9e469038.chunk.js": "/static/js/377.9e469038.chunk.js",
     "static/media/SEGOEUI.TTF": "/static/media/SEGOEUI.904177516a6c6c681d51.TTF",
     "static/media/SourceSansPro-Regular.ttf": "/static/media/SourceSansPro-Regular.efa76f8326aa5cee3bdd.ttf",
@@ -21,8 +21,8 @@
     "static/media/commentIcon.svg": "/static/media/commentIcon.2a31d7b9114f60104004e3f577d4ea3f.svg",
     "static/media/loader.svg": "/static/media/loader.4ce56a5f125d91cf6f2023fde70ca3d0.svg",
     "static/media/attachmentIcon.svg": "/static/media/attachmentIcon.20c401b8091c724e1949ed55249c3edf.svg",
-    "index.html": "/index.html",
     "static/media/editIcon.svg": "/static/media/editIcon.25a630a2707848feee0b14f0a0ce79aa.svg",
+    "index.html": "/index.html",
     "static/media/purple.svg": "/static/media/purple.2142e2342b29240fb96aaf1a2e69b8fc.svg",
     "static/media/yellow.svg": "/static/media/yellow.4afdcfbe7294ca16f25ff1338c9f80e5.svg",
     "static/media/green.svg": "/static/media/green.e5a1d31a79c54c150f2eb5fdf588e983.svg",
@@ -33,12 +33,12 @@
     "static/media/dark-navy.svg": "/static/media/dark-navy.a39768a78f9eabb62da631c63e1aa5dd.svg",
     "static/media/orange.svg": "/static/media/orange.302d24d5949e72499db2778caab49681.svg",
     "static/media/blue.svg": "/static/media/blue.b5480173b8e7b26f24c71f25366c6020.svg",
-    "main.29fc0ef7.css.map": "/static/css/main.29fc0ef7.css.map",
-    "main.de206278.js.map": "/static/js/main.de206278.js.map",
+    "main.1c029a88.css.map": "/static/css/main.1c029a88.css.map",
+    "main.067cb299.js.map": "/static/js/main.067cb299.js.map",
     "377.9e469038.chunk.js.map": "/static/js/377.9e469038.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.29fc0ef7.css",
-    "static/js/main.de206278.js"
+    "static/css/main.1c029a88.css",
+    "static/js/main.067cb299.js"
   ]
 }
